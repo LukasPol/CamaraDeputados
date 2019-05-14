@@ -1,0 +1,28 @@
+<div class='listagem' (click)="this.escondeJanela(dep, deps)" #deps>
+  <h2>Listagem</h2>
+
+  <ul>
+    <li *ngFor="let d of this.deputados" (click)="this.consultaId(d.id, deps)">
+      <p>{{d.nome}}</p>
+      <p>{{d.siglaPartido}} - {{d.siglaUf}}</p>
+      <img src="{{d.urlFoto}}">
+    </li>
+  </ul>
+</div>
+
+<div class="deputado" *ngIf="this.deputado != undefined"  #dep>
+  <div>
+      <p class="fechar" (click)="this.escondeJanela(dep, deps)">X</p>
+      <img src="{{ this.deputado.ultimoStatus.urlFoto }}">
+  </div>
+  <div class="dados">
+      <p>Nome: {{this.deputado.nomeCivil}}</p>
+      <p>Nascimento: {{this.deputado.dataNascimento}}</p>
+      <p>Nasceu em: {{this.deputado.municipioNascimento}}, {{this.deputado.ufNascimento}}</p>
+      <p>Escolaridade: {{this.deputado.escolaridade}} </p>
+      <p>Sigla Partido: {{this.deputado.ultimoStatus.siglaPartido}} </p>
+      <p>Situação: {{this.deputado.ultimoStatus.situacao}}</p>
+  </div>
+  
+</div>
+
